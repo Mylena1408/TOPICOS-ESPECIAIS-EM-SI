@@ -1,0 +1,18 @@
+Atividade Assincrona- Aonde há a leitura de 3 artigos.
+Objetivo: Compreender quais os pontos em comum que tem os artigos e também por qual motivo são contaditórios os 3 artigos.
+
+artigo 1: O artigo “Agentic coding and persistent returns to expertise” analisa a utilização de agentes de inteligência artificial na realização de atividades relacionadas à programação.
+A pesquisa fundamenta-se na análise de aproximadamente 400 mil sessões do Claude Code, realizadas entre outubro de 2025 e abril de 2026.
+O estudo busca compreender a divisão de responsabilidades entre usuários e agentes de inteligência artificial durante a execução das tarefas.
+Os resultados indicam que os usuários concentram-se predominantemente nas decisões de planejamento, enquanto os agentes assumem grande parte das decisões relacionadas à execução.
+Nesse contexto, cabe ao usuário estabelecer objetivos, definir requisitos e determinar os critérios necessários para a realização da atividade.
+A inteligência artificial, por sua vez, pode executar ações como escrever e modificar códigos, operar arquivos, executar comandos e realizar testes.
+O estudo evidencia ainda que o nível de conhecimento do usuário sobre o domínio da tarefa está relacionado à probabilidade de sucesso da atividade.
+Usuários com maior domínio conseguem fornecer instruções mais precisas e direcionar os agentes de maneira mais eficiente.
+Além disso, apresentam maior capacidade de identificar erros, corrigir problemas e conduzir a atividade até a obtenção do resultado esperado.
+Em contrapartida, usuários classificados como iniciantes apresentam maior dificuldade para lidar com situações em que a execução encontra obstáculos.
+A pesquisa também demonstra uma mudança na natureza das atividades realizadas com agentes de IA, que passaram de tarefas predominantemente relacionadas à correção de códigos para atividades mais abrangentes.
+Entre essas atividades estão a operação de softwares, a análise de dados e a produção de documentos, indicando uma ampliação do uso dos agentes.
+Dessa forma, o estudo sugere que a expansão das capacidades da inteligência artificial não elimina a importância do conhecimento humano sobre o domínio de aplicação.
+Ao contrário, a competência para compreender problemas, estabelecer objetivos e avaliar resultados permanece relevante para a utilização eficaz dessas tecnologias.
+Conclui-se, portanto, que os agentes de inteligência artificial podem ampliar a capacidade de realização de tarefas, especialmente quando são utilizados por pessoas que possuem conhecimento suficiente para orientá-los e avaliar suas respostas.
