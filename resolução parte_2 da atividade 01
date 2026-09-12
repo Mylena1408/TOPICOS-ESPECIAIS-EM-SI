@@ -1,0 +1,28 @@
+acerca da atividade do dia 2026-09-03
+acerca da atividade 01 da aula,conseguiu-se esse resultado: 
+INFORMAÇÃO OBTIDAS APÓS A EXTRAÇÃO DE ARQUIVOS ENCONTRADOS NO GITHUB django-rest-framework Public , PR #9198 RESOLUÇÃO DE UM PROBLEMA DE FRAMEWORK
+O DJANGO APÓS A VERSÃO 3.11.7 NÃO CONSEGUE CAPTURAR AS RESOLUÇÕES EM HTML NO FORMULARIO.
+O PR #9891 — “Fix DictField HTML input returning empty dict for missing fields” corrige um bug no DictField do Django REST Framework quando os dados chegam por formulário HTML / multipart/form-data. O PR foi marcado como Merged em 6 de agosto de 2026. 
+
+PROBLEMA NA FUNÇÃO:
+ rest_framework/utils/html.py
+        ↓
+parse_html_dict()
+
+A RESOLUÇÃO DO PROGRAMADOR
+A solução principal foi tornar parse_html_dict() capaz de receber um parâmetro:
+default
+Assim, quando nenhum campo correspondente é encontrado, a função pode retornar um valor específico — em vez de sempre retornar um MultiValueDict vazio.
+A mudança ficou distribuída principalmente em:
+rest_framework/utils/html.py
+rest_framework/fields.py
+rest_framework/serializers.py
+tests/test_fields.py
+
+RESUMO: O bug era: o FRAMEWORK não conseguia distinguir corretamente "o campo não foi enviado" de "o campo foi enviado vazio" em determinadas entradas HTML. 
+
+
+PERMITIU O FRAMEWORK A RECONHECER O ESPAÇO AUSENTE.
+
+
+A RESOLUÇÃO FOI CONSTITUIDO APÓS 17 COMMITS.
