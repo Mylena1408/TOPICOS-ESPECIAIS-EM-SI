@@ -1,0 +1,1 @@
+ atividade consistem em analisar e estudar o comportamento de um programa python teste e a inclusão de um agente, no caso foi escolhido o Ollama para ser iintegrado ao Python e todos os testes foram executado via VS Code, foram necessárias pelo menos 4 tentativas para ajustar saídas e variáveis necessárias para a execução correta da atividade e atender ao resultado esperado
