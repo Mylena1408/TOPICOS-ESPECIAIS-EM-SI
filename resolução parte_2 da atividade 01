@@ -22,7 +22,7 @@ tests/test_fields.py
 RESUMO: O bug era: o FRAMEWORK não conseguia distinguir corretamente "o campo não foi enviado" de "o campo foi enviado vazio" em determinadas entradas HTML. 
 
 
-PERMITIU O FRAMEWORK A RECONHECER O ESPAÇO AUSENTE.
+PERMITIU O FRAMEWORK A RECONHECER O ESPAÇO AUSENTE.s
 
 
 A RESOLUÇÃO FOI CONSTITUIDO APÓS 17 COMMITS.
