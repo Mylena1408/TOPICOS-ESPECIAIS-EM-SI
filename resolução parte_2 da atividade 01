@@ -4,7 +4,7 @@ INFORMAÇÃO OBTIDAS APÓS A EXTRAÇÃO DE ARQUIVOS ENCONTRADOS NO GITHUB django
 O DJANGO APÓS A VERSÃO 3.11.7 NÃO CONSEGUE CAPTURAR AS RESOLUÇÕES EM HTML NO FORMULARIO.
 O PR #9891 — “Fix DictField HTML input returning empty dict for missing fields” corrige um bug no DictField do Django REST Framework quando os dados chegam por formulário HTML / multipart/form-data. O PR foi marcado como Merged em 6 de agosto de 2026. 
 
-PROBLEMA NA FUNÇÃO:
+PROBLEMA NA FUNÇÃO: 
  rest_framework/utils/html.py
         ↓
 parse_html_dict()
