@@ -1,2 +1,3 @@
 A aula referiu-se principalmente ao conceito de contexto em que os agentes precisam utilizar para criar uma relação de custo beneficio, com a geração de tokens e o tipo de utilização deste modelo para atender as necessidades dos usuários. 
 Ocorre por meio de tentativas.
+A aula teve como principal objetivo apresentar a relação entre ambiente, contexto e agentes. Fornecendo então uma relação acerca da viabilidade do agente sendo condicional ao contexto em que ocorre, chama-se engenharia de contexto e impacta significativamente na produção de tokens, o contexto é um otimizador de atividade do modelo. 
