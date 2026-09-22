@@ -1,3 +1,11 @@
-A aula referiu-se principalmente ao conceito de contexto em que os agentes precisam utilizar para criar uma relação de custo beneficio, com a geração de tokens e o tipo de utilização deste modelo para atender as necessidades dos usuários. 
-Ocorre por meio de tentativas.
-A aula teve como principal objetivo apresentar a relação entre ambiente, contexto e agentes. Fornecendo então uma relação acerca da viabilidade do agente sendo condicional ao contexto em que ocorre, chama-se engenharia de contexto e impacta significativamente na produção de tokens, o contexto é um otimizador de atividade do modelo. 
+# AULA 03
+
+**Objetivo.** Compreender o conceito de contexto e sua importância na utilização de agentes de inteligência artificial.
+
+**Ferramenta.** Agente de IA, com utilização de contexto e geração de tokens.
+
+**O que o agente entregou.** Respostas geradas a partir do contexto fornecido, utilizando diferentes tentativas para atender às necessidades do usuário.
+
+**O que mudamos à mão.** Ajustamos o contexto e a forma de utilização do modelo para buscar uma melhor relação entre custo e benefício.
+
+**O que aprendemos.** O contexto e a quantidade de tokens influenciam diretamente a utilização do modelo. Por isso, é necessário fornecer informações adequadas ao agente e realizar tentativas até encontrar uma forma eficiente de atender à necessidade do usuário.
