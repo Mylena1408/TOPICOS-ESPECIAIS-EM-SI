@@ -9,3 +9,10 @@
 **O que mudamos à mão.** Ajustamos o contexto e a forma de utilização do modelo para buscar uma melhor relação entre custo e benefício.
 
 **O que aprendemos.** O contexto e a quantidade de tokens influenciam diretamente a utilização do modelo. Por isso, é necessário fornecer informações adequadas ao agente e realizar tentativas até encontrar uma forma eficiente de atender à necessidade do usuário.
+Diário - 2026-09-19
+
+A aula apresenta o cerne sobre laços, acerca da aula 01 e 02.
+O laço produzido pela atividade 02 tem efeitos colaterais.
+O contexto de uso dos tokens e prompt gera  uma relação de filtro de que deve ser inserido no prompt.
+
+O conceito de contexto tem uma relação com a precisão do modelo 
