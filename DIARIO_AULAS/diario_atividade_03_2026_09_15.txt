@@ -1,0 +1,212 @@
+# Diário da Atividade 03 — Engenharia de Contexto para Agentes de IA
+
+## 1. Repositório e tarefa escolhida
+
+O repositório utilizado foi o **HTTPX**, da organização Encode, em uma cópia local do projeto.
+
+A tarefa escolhida foi corrigir a validação da classe `Timeout`, especificamente no caso em que uma instância de `Timeout` é passada como primeiro argumento juntamente com overrides individuais como `connect`, `read`, `write` ou `pool`.
+
+O problema investigado estava relacionado ao uso de `assert` na implementação. Quando o Python é executado com a opção `-O`, as instruções `assert` são removidas, fazendo com que uma configuração inválida pudesse ser aceita silenciosamente.
+
+O comportamento esperado foi definido como uma validação explícita, independente do modo de otimização do Python.
+
+## 2. Contexto fornecido ao agente
+
+Antes da execução do agente foram preparados dois arquivos de contexto na raiz do projeto:
+
+* `AGENTS.md`
+* `NOTES.md`
+
+O `AGENTS.md` apresentou as regras e o escopo da tarefa, os arquivos relevantes, os comportamentos que deveriam ser preservados, os testes esperados e a definição de pronto.
+
+O `NOTES.md` registrou a investigação inicial do código, incluindo:
+
+* localização da implementação em `httpx/_config.py`;
+* funcionamento atual da classe `Timeout`;
+* uso dos quatro `assert` na validação;
+* testes existentes em `tests/test_config.py`;
+* testes relacionados a timeout em `tests/test_timeouts.py`;
+* reprodução do problema com Python normal;
+* reprodução do comportamento incorreto com `python -O`;
+* hipótese de solução;
+* resultados dos testes de referência.
+
+Também foi criado previamente um teste de regressão em `tests/test_config.py`:
+
+```python
+def test_timeout_from_config_instance_with_override():
+    timeout = httpx.Timeout(timeout=5.0)
+
+    with pytest.raises(ValueError):
+        httpx.Timeout(timeout, connect=10.0)
+```
+
+## 3. Primeira tentativa de execução do agente
+
+Na primeira tentativa, o agente estava trabalhando no diretório incorreto, em:
+
+```text
+C:\Users\Mylena Reis
+```
+
+Como consequência, ele não encontrou `AGENTS.md`, `NOTES.md` nem `tests/test_config.py`.
+
+A execução foi interrompida para corrigir o diretório de trabalho.
+
+O agente foi então iniciado diretamente na raiz correta do repositório:
+
+```text
+M:\estudos_e_ufpa\ufpa\8_SEMESTRE\ADS\atividade_03\atividade03-asd\httpx
+```
+
+Nessa execução, o agente identificou e carregou o `AGENTS.md`.
+
+## 4. O que o agente fez
+
+Na primeira rodada efetiva, o agente:
+
+1. leu o contexto disponível;
+2. executou os testes de `tests/test_config.py`;
+3. identificou problemas de dependências no ambiente Python utilizado pelo agente;
+4. instalou `pytest`, `trio`, `trustme` e `uvicorn`;
+5. executou novamente os testes;
+6. modificou `httpx/_config.py`;
+7. substituiu a validação baseada em `assert` por uma verificação explícita;
+8. executou o teste de regressão;
+9. verificou o comportamento tanto com Python normal quanto com `python -O`.
+
+A implementação passou a utilizar uma condição equivalente a:
+
+```python
+if any(param is not UNSET for param in (connect, read, write, pool)):
+    raise ValueError(...)
+```
+
+## 5. Resultado da implementação
+
+O teste específico de configuração foi executado no ambiente virtual do projeto:
+
+```text
+python -m pytest tests/test_config.py -q
+```
+
+Resultado:
+
+```text
+29 passed
+```
+
+O comportamento com otimização também foi verificado:
+
+```text
+python -O -c "import httpx; print(httpx.Timeout(httpx.Timeout(5.0), connect=10.0))"
+```
+
+O resultado foi uma `ValueError`, demonstrando que a validação não desaparece quando o Python é executado com `-O`.
+
+## 6. Testes relacionados a timeout
+
+Foi executado:
+
+```text
+python -m pytest tests/test_timeouts.py -q
+```
+
+Resultado:
+
+```text
+8 passed
+2 failed
+```
+
+As duas falhas ocorreram em:
+
+```text
+test_write_timeout[asyncio]
+test_write_timeout[trio]
+```
+
+Essas falhas já haviam sido identificadas antes da implementação da tarefa e não estão relacionadas diretamente à alteração realizada em `Timeout`.
+
+Por isso, elas foram mantidas fora do escopo da correção.
+
+## 7. O que o agente esqueceu ou não conseguiu fazer
+
+Não houve evidência de que o agente tenha esquecido uma instrução funcional importante do `AGENTS.md`.
+
+Entretanto, houve dois problemas durante a execução:
+
+### Diretório de trabalho
+
+Na primeira tentativa, o agente iniciou fora do repositório e não conseguiu localizar os arquivos do projeto.
+
+### Ambiente Python
+
+Mesmo após estar no diretório correto, o agente utilizou o Python global do Windows em vez de utilizar o ambiente virtual que havia sido preparado para o projeto.
+
+Isso fez com que algumas dependências não fossem encontradas e o agente instalasse pacotes utilizando o `pip` do ambiente global do usuário.
+
+Esse comportamento foi observado pelos caminhos apresentados pelo próprio agente durante a execução.
+
+## 8. Correções manuais
+
+Não foi necessária nenhuma correção manual na implementação da solução.
+
+A alteração em `httpx/_config.py` foi realizada pelo agente.
+
+Também não foi necessária uma segunda rodada para corrigir a implementação.
+
+As intervenções manuais realizadas durante o processo foram relacionadas principalmente ao ambiente de execução e à organização do diretório de trabalho.
+
+## 9. Quantidade de rodadas
+
+Foram necessárias:
+
+**1 rodada efetiva de implementação do agente.**
+
+Antes dela houve uma tentativa inicial que não conseguiu acessar o projeto porque o agente estava no diretório incorreto.
+
+## 10. Verificação do diff
+
+Foi executado:
+
+```text
+git diff --check
+```
+
+O comando não apresentou erros.
+
+O diff mostrou alterações em apenas:
+
+```text
+httpx/_config.py
+tests/test_config.py
+```
+
+A alteração de implementação substituiu os quatro `assert` por uma validação explícita com `ValueError`.
+
+O teste de regressão foi adicionado em `tests/test_config.py`.
+
+## 11. Estado ao final desta etapa
+
+O branch utilizado foi:
+
+```text
+atividade-03-timeout-validation
+```
+
+Os arquivos modificados são:
+
+```text
+httpx/_config.py
+tests/test_config.py
+```
+
+Os arquivos de contexto são:
+
+```text
+AGENTS.md
+NOTES.md
+```
+
+Ainda não foi realizado commit nesta etapa.
